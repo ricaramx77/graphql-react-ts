@@ -1,10 +1,28 @@
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "./graphql/queries";
 
-interface User {
+export interface Geo {
+  lat: string;
+  lng: string;
+}
+
+export interface Address {
+  geo: Geo;
+}
+
+export interface User {
   id: string;
   name: string;
   email: string;
+  address: Address;
+}
+
+export interface GetUserData {
+  user: User;
+}
+
+export interface GetUserVars {
+  id: string;
 }
 
 function App() {
@@ -26,6 +44,7 @@ function App() {
       <p><strong>ID:</strong> {user.id}</p>
       <p><strong>Name:</strong> {user.name}</p>
       <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>Latitud:</strong> {user.address?.geo?.lat}</p>
     </div>
   );
 }

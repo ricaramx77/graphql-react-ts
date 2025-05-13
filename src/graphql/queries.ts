@@ -6,7 +6,13 @@ export const GET_USER = gql`
     user(id: $id) {
       id
       name
-      email
+      email,
+       address {
+        geo {
+            lat
+            lng
+        }
+      }
     }
   }
 `;
